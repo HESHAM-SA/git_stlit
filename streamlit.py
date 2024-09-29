@@ -1,17 +1,13 @@
 import streamlit as st
-import pickle
+import joblib
 
 
-st.title('STREAMLIT TITLE')
-st.write('## Mark down')
+st.title('Hello world')
+st.write('## Salary')
 
-import streamlit as st
+x= st.slider('Exp', 0 , 40)
 
-# Function to load the model
-def load_model():
-    with open('linear_model.pkl', 'rb') as file:
-        model = pickle.load(file)
-    return model
+model = joblib.load('linear_model.pkl')
 
-# Load the model
-model = load_model()
+y = model.predict([[x]])
+st.write('Salary : ',y )
